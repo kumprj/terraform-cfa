@@ -97,8 +97,8 @@ data "aws_iam_policy_document" "policy" {
 }
 
 resource "aws_iam_policy" "policy" {
-  name        = "CubsCfaTfPolicy"
-  description = "Test out text alerts for cubs with Terraform!"
+  name        = "CfaTfPolicy"
+  description = "Test out text alerts for hawks and cubs with Terraform!"
   policy      = data.aws_iam_policy_document.policy.json
 }
 
