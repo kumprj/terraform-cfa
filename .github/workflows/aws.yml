@@ -3,9 +3,9 @@
 name: Deploy Terraform Scripts
 on:
   push:
-    branches: [ main, feature* ]
-  pull_request:
-    types: [ opened, synchronized ]
+    branches: [ main, feature/* ]
+  # pull_request:
+  #   types: [ opened, synchronized ]
 
 jobs:
   deploy-terraform-scripts:
@@ -29,4 +29,4 @@ jobs:
         cd terraform/
         terraform init
         terraform plan
-        terraform apply -auto-approve --no-color
+        terraform apply -auto-approve

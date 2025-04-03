@@ -10,6 +10,8 @@ module "hawks_lambda_function" {
   timeout                = 90
   create_package         = false
   maximum_retry_attempts = 0
+  attach_policy          = true
+  policy                 = aws_iam_policy.policy.arn
   local_existing_package = "../package.zip" # Dummy zip to be updated via a Github Action
   # Have to re-add IAM role for dynamodb full read access
   environment_variables = {
@@ -18,4 +20,3 @@ module "hawks_lambda_function" {
     SENDER_NUMBER      = var.sender_number
   }
 }
-
