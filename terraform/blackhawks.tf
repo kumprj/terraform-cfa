@@ -20,19 +20,3 @@ module "hawks_lambda_function" {
     SENDER_NUMBER      = var.sender_number
   }
 }
-
-# resource "aws_iam_policy" "hawks_policy" {
-#   name        = "BlackhawksCfaTfPolicy"
-#   description = "Test out text alerts for blackhawks with Terraform!"
-#   policy      = data.aws_iam_policy_document.policy.json
-# }
-
-resource "aws_iam_role" "hawks_role" {
-  name               = "hawks-cfa-texter-tf"
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
-}
-
-resource "aws_iam_role_policy_attachment" "hawks_terraform_lambda_policy" {
-  role       = aws_iam_role.hawks_role.name
-  policy_arn = aws_iam_policy.policy.arn
-}
