@@ -4,8 +4,8 @@ name: Deploy Terraform Scripts
 on:
   push:
     branches: [ main, feature/* ]
-  pull_request:
-    types: [ opened, synchronized ]
+  # pull_request:
+  #   types: [ opened, synchronized ]
 
 jobs:
   deploy-terraform-scripts:
