@@ -1,0 +1,32 @@
+# Uses https://github.com/yvesgurcan/deploy-lambda-function
+
+name: Deploy Terraform Scripts
+on:
+  push:
+    branches: [ main, feature* ]
+  pull_request:
+    types: [ opened, synchronized ]
+
+jobs:
+  deploy-terraform-scripts:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ secrets.TERRAFORM_VERSION }}
+    - name: Run Terraform Scripts
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: us-east-1
+        TF_VAR_twilio_account_sid: ${{ secrets.TWILIO_ACCOUNT_SID }}
+        TF_VAR_twilio_auth_token: ${{ secrets.TWILIO_AUTH_TOKEN }}
+        TF_VAR_sender_number: ${{ secrets.SENDER_NUMBER }}
+      run: |
+        cd terraform/
+        terraform init
+        terraform plan
+        terraform apply -auto-approve --no-color
