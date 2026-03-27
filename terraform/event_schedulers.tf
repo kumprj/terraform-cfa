@@ -5,7 +5,7 @@ resource "aws_scheduler_schedule" "cubs_4pm" {
   schedule_expression = "cron(0 21 * * ? *)"  # 9 PM UTC = 4 PM Central
   target {
     arn      = "arn:aws:lambda:us-east-1:875660052076:function:cubs-cfa-texter"
-    role_arn = "arn:aws:iam:us-east-1:875660052076:role/service-role/Amazon_EventBridge_Scheduler_LAMBDA_d214280288"
+    role_arn = "arn:aws:iam::875660052076:role/service-role/Amazon_EventBridge_Scheduler_LAMBDA_d214280288"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_scheduler_schedule" "cubs_9pm" {
   schedule_expression = "cron(0 2 * * ? *)"  # 2 AM UTC = 9 PM Central (previous day)
   target {
     arn      = "arn:aws:lambda:us-east-1:875660052076:function:cubs-cfa-texter"
-    role_arn = "arn:aws:iam:us-east-1:875660052076:role/service-role/Amazon_EventBridge_Scheduler_LAMBDA_d214280288"
+    role_arn = "arn:aws:iam::875660052076:role/service-role/Amazon_EventBridge_Scheduler_LAMBDA_d214280288"
   }
 }
 
