@@ -13,7 +13,7 @@ module "hawks_lambda_function" {
   attach_policy          = true
   policy                 = aws_iam_policy.policy.arn
   local_existing_package = "../package.zip" # Dummy zip to be updated via a Github Action
-  # Have to re-add IAM role for dynamodb full read access
+  
   environment_variables = {
     TWILIO_ACCOUNT_SID = var.twilio_account_sid
     TWILIO_AUTH_TOKEN  = var.twilio_auth_token

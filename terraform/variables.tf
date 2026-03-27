@@ -12,5 +12,5 @@ variable "twilio_auth_token" {
 variable "sender_number" {
   description = "Value of the twilio outbound number."
   type        = string
-  default     = "+15134906966"
+  default     = "+15131234567"
 }

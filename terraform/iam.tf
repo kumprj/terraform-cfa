@@ -84,13 +84,13 @@ resource "aws_iam_policy" "policy" {
   description = "Test out text alerts for hawks and cubs with Terraform!"
   policy      = data.aws_iam_policy_document.policy.json
 }
-
+// Cubs Lambda Role Info
 resource "aws_iam_role" "terraform_function_role" {
   name               = "cubs-cfa-texter-tf"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
-
+// Cubs Lambda Role Info
 resource "aws_iam_role_policy_attachment" "terraform_lambda_policy" {
   role       = aws_iam_role.terraform_function_role.name
   policy_arn = aws_iam_policy.policy.arn
@@ -102,8 +102,9 @@ resource "aws_iam_role" "hawks_role" {
   name               = "hawks-cfa-texter-tf"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
-
+// Hakws Lambda Roles
 resource "aws_iam_role_policy_attachment" "hawks_terraform_lambda_policy" {
   role       = aws_iam_role.hawks_role.name
   policy_arn = aws_iam_policy.policy.arn
 }
+// Uses IAM Policy in Cubs section for these two.
